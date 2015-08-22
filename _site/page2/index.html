@@ -17,14 +17,14 @@
 
   <title>
     
-      Lanyon
+      Achref Tlili
     
   </title>
 
   
   <meta property="og:title" content="Home">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="http://lanyon.getpoole.com/page2/">
+  <meta property="og:url" content="https://achreftlili.github.io//page2/">
   <meta property="og:description" content="">
   
   
@@ -61,7 +61,7 @@
 <!-- Toggleable sidebar -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-item">
-    <p>A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that places the utmost gravity on content with a hidden drawer. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.</p>
+    <p>Achref Tlili Blog for web development</p>
  <img src="/images/me.jpg" alt="Mountain View" style="width:100px;height:130px;">
   </div>
 
@@ -82,24 +82,16 @@
     
       
         
+          <a class="sidebar-nav-item" href="/Blog_purpose/">Purpose  !</a>
+        
+      
+    
+      
+        
           <a class="sidebar-nav-item" href="/about/">About Tlili achref</a>
         
       
     
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/books/">Bookshelf</a>
-        
-      
-    
-      
-        
-      
-    
-      
-        
       
     
       
@@ -122,16 +114,17 @@
     </span>
   </nav>
 
+
   <div class="sidebar-item">
     <ul class="social-links">
       <li>
-        <i class="fa fa-github"></i>&nbsp;<a href="http://www.github.com/willdurand">GitHub</a>
+        <i class="fa fa-github"></i>&nbsp;<a target="_blank"href="http://www.github.com/achreftlili">GitHub</a>
       </li>
       <li>
-        <i class="fa fa-linkedin"></i>&nbsp;<a href="http://linkedin.com/in/williamdurand">LinkedIn</a>
+        <i class="fa fa-linkedin"></i>&nbsp;<a target="_blank" href="https://tn.linkedin.com/pub/tlili-achref/a2/857/951">LinkedIn</a>
       </li>
       <li>
-        <i class="fa fa-twitter"></i>&nbsp;<a href="http://www.twitter.com/couac">Twitter</a>
+        <i class="fa fa-twitter"></i>&nbsp;<a target="_blank" href="http://www.twitter.com/Audiovisuelle3">Twitter</a>
       </li>
     </ul>
   </div>
@@ -144,8 +137,8 @@
       <div class="masthead">
         <div class="container">
           <h3 class="masthead-title">
-            <a href="/" title="Home">Lanyon</a>
-            <small>A Jekyll theme</small>
+            <a href="/" title="Home">Achref Tlili</a>
+            <small></small>
           </h3>
         </div>
       </div>
@@ -155,64 +148,50 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="//2014/01/03/introducing-lanyon/">
-        Introducing Lanyon
+      <a href="//2015/08/22/Ajaxify-your-form/">
+        Ajaxify your Forms?
       </a>
     </h1>
 
-    <span class="post-date">03 Jan 2014</span>
+    <span class="post-date">22 Aug 2015</span>
 
-    <hr>
+    <p>In this post we gonna see how to add ajax to our forms in symfony which will help us create ajaxified web pages in seconds so focus :p</p>
 
-<p>layout: post</p>
+<blockquote>
+<p>first think we gonna create a javascript function which we will use to get the response of a specific route this function get two parameters, the first is the route path the other one is the id of div where you one put the response of the route .</p>
+</blockquote>
 
-<h2>title: Introducing Lanyon</h2>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">routeBringer</span><span class="p">(</span><span class="nx">route</span><span class="p">,</span><span class="nx">id_of_div</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="o">+</span><span class="nx">id_of_div</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">&quot;Chargement ...&quot;</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+      <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+      <span class="nx">url</span><span class="o">:</span> <span class="nx">route</span><span class="p">,</span>
+      <span class="nx">data</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nx">cache</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">html</span><span class="p">){</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="o">+</span><span class="nx">idul</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">html</span><span class="p">);</span> <span class="p">}});</span>
+<span class="p">}</span></code></pre></div>
 
-<p>Lanyon is an unassuming <a href="http://jekyllrb.com">Jekyll</a> theme that places content first by tucking away navigation in a hidden drawer. It&#39;s based on <a href="http://getpoole.com">Poole</a>, the Jekyll butler.</p>
+<p>after that you added this methode we gonna use it in button for example  button that create a new entry</p>
 
-<h3>Built on Poole</h3>
-
-<p>Poole is the Jekyll Butler, serving as an upstanding and effective foundation for Jekyll themes by <a href="https://twitter.com/mdo">@mdo</a>. Poole, and every theme built on it (like Lanyon here) includes the following:</p>
-
-<ul>
-<li>Complete Jekyll setup included (layouts, config, <a href="/404">404</a>, <a href="/atom.xml">RSS feed</a>, posts, and <a href="/about">example page</a>)</li>
-<li>Mobile friendly design and development</li>
-<li>Easily scalable text and component sizing with <code>rem</code> units in the CSS</li>
-<li>Support for a wide gamut of HTML elements</li>
-<li>Related posts (time-based, because Jekyll) below each post</li>
-<li>Syntax highlighting, courtesy Pygments (the Python-based code snippet highlighter)</li>
-</ul>
-
-<h3>Lanyon features</h3>
-
-<p>In addition to the features of Poole, Lanyon adds the following:</p>
-
-<ul>
-<li>Toggleable sliding sidebar (built with only CSS) via <strong>☰</strong> link in top corner</li>
-<li>Sidebar includes support for textual modules and a dynamically generated navigation with active link support</li>
-<li>Two orientations for content and sidebar, default (left sidebar) and <a href="https://github.com/poole/lanyon#reverse-layout">reverse</a> (right sidebar), available via <code>&lt;body&gt;</code> classes</li>
-<li><a href="https://github.com/poole/lanyon#themes">Eight optional color schemes</a>, available via <code>&lt;body&gt;</code> classes</li>
-</ul>
-
-<p><a href="https://github.com/poole/lanyon#readme">Head to the readme</a> to learn more.</p>
-
-<h3>Browser support</h3>
-
-<p>Lanyon is by preference a forward-thinking project. In addition to the latest versions of Chrome, Safari (mobile and desktop), and Firefox, it is only compatible with Internet Explorer 9 and above.</p>
-
-<h3>Download</h3>
-
-<p>Lanyon is developed on and hosted with GitHub. Head to the <a href="https://github.com/poole/lanyon">GitHub repository</a> for downloads, bug reports, and features requests.</p>
-
-<p>Thanks!</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">button</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;btn btn-sm btn-success&quot;</span> <span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;newContact()&quot;</span><span class="o">&gt;</span>
+<span class="nx">Ajouter</span> <span class="nx">Contact</span>
+   <span class="o">&lt;</span><span class="err">/button&gt;</span></code></pre></div>
 
   </div>
   
 </div>
+<div class="share-page">
+    Share this on &rarr;
+    <a href="https://twitter.com/intent/tweet?text=Home&url=https://achreftlili.github.io//page2/&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+    <a href="https://facebook.com/sharer.php?u=https://achreftlili.github.io//page2/" rel="nofollow" target="_blank"
+    title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    <a href="http://www.linkedin.com/shareArticle?mini=true&url=https://achreftlili.github.io/&title=Home&summary=&source=" rel="nofollow" target="_blank" title="Share on Linkedin"><i class="fa fa-linkedin"></i></a>
+</div>
+
 
 <div class="pagination">
   
-    <a class="pagination-item older" href="/page3">Older</a>
+    <span class="pagination-item older">Older</span>
   
   
     
@@ -220,7 +199,6 @@
     
   
 </div>
-
 
       </div>
     </div>

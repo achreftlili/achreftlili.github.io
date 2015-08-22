@@ -3,6 +3,9 @@ layout: default
 title: Home
 ---
 
+
+
+
 <div class="posts">
   {% for post in paginator.posts %}
   <div class="post">
@@ -18,6 +21,7 @@ title: Home
   </div>
   {% endfor %}
 </div>
+{% include share.html %}
 
 <div class="pagination">
   {% if paginator.next_page %}
@@ -35,4 +39,3 @@ title: Home
     <span class="pagination-item newer">Newer</span>
   {% endif %}
 </div>
-

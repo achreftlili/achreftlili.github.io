@@ -1,7 +1,23 @@
 
 
+.share-page {
+    text-align: center;
+    background: #213456;
+    color: #FFFFFF;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin: 1.5 * $spacing-unit 0;
 
+    a {
+        font-weight: 700;
+        color: #fff;
+        margin-left: 10px;
 
+        &:hover {
+            border-bottom: 1px dashed #fff;
+        }
+    }
+}
 
 .fundo{
   width:540px;
@@ -14,7 +30,7 @@
 /*Wordpress block */
 
 #progresso1{
-  width:80%;
+  width:70%;
   animation:prog1 4s;/*IE */
   -webkit-animation:prog1 4s; /* Safari and Chrome */
   -moz-animation:prog1 4s; /* Firefox */
@@ -26,26 +42,26 @@
 @keyframes prog1
 {
   from {width:150px;}
-to{width:80%;}
+to{width:70%;}
 }
  /* Safari and Chrome */
 @-webkit-keyframes prog1
 {
   from {width:150px;}
-to{width:80%;}
+to{width:70%;}
 }
 
 /*Firefox*/
 @-moz-keyframes prog1
 {
   from {width:150px;}
-to{width:80%;}
+to{width:70%;}
 }
 
 /*Opera*/
 @-o-keyframes prog1{
   from{width:150px;}
-to{width:80%;}
+to{width:70%;}
 }
 
 /* HTML5 Block */
@@ -54,7 +70,7 @@ to{width:80%;}
   -webkit-animation:prog2 5s; /* Safari and Chrome */
   -moz-animation:prog2 5s; /* Firefox */
   -o-animation:prog2 5s; /*Opera*/
-  width:95%;
+  width:75%;
   height:50px;
   position:absolute;
   background-color:#55a69f;
@@ -64,27 +80,27 @@ to{width:80%;}
 @keyframes prog2
 {
   from{width:150px}
-to{width:95%}
+to{width:75%}
 }
 
 /* Safari and Chrome */
 @-webkit-keyframes prog2
 {
   from{width:150px;}
-to{width:95%;}
+to{width:75%;}
 }
 
  /* Firefox */
 @-moz-keyframes prog2
 {
   from{width:150px;}
-to{width:95%;}
+to{width:75%;}
 }
 /* Opera */
 @-o-keyframes prog2
 {
   from{width:150px;}
-to{width:95%;}
+to{width:75%;}
 }
 
 /* JQuery Block */
@@ -133,38 +149,38 @@ to{width:75%;}
   -webkit-animation:prog4 4s; /* Firefox */
   -moz-animation:prog4 4s; /* Safari and Chrome */
   -o-animation:prog4 4s; /*Opera*/
-  width:65%;
+  width:80%;
   height:50px;
   position:absolute;
-  background-color:#c44e45;
+  background-color:#6CB5FF;
 }
 
 /* IE */
 @keyframes prog4
 {
   from{width:150px;}
-to{width:65%;}
+to{width:80%;}
 }
 
 /* Safari and Chrome */
 @-webkit-keyframes prog4
 {
   from{width:150px;}
-to{width:65%;}
+to{width:80%;}
 }
 
 /* FireFox */
 @-moz-keyframes prog4
 {
   from{width:150px;}
-to{width:65%;}
+to{width:80%;}
 }
 
 /* Opera */
 @-o-keyframes prog4
 {
   from{width:150px;}
-to{width:65%;}
+to{width:80%;}
 }
 
 /* php & MySQL Block */
@@ -176,7 +192,7 @@ to{width:65%;}
   width:80%;
   height:50px;
   position:absolute;
-  background-color:#5A69A6;
+  background-color:#BF94BF;
 }
 
 /* IE */
@@ -206,6 +222,49 @@ to{width:80%;}
   from{width:150px;}
 to{width:80%;}
 }
+a + a {
+    margin-left: 10px;
+}
+/* CMS Block */
+#progresso6{
+  animation:prog6 4s; /*IE */
+  -webkit-animation:prog6 4s; /* Safari and Chrome */
+  -moz-animation:prog6 4s; /* Firefox */
+  -o-animation:prog6 4s; /*Opera*/
+  width:60%;
+  height:50px;
+  position:absolute;
+  background-color:#FF7D7D;
+}
+
+/* IE */
+@keyframes prog6
+{
+  from{width:150px;}
+to{width:60%;}
+}
+
+/* Safari and Chrome */
+@-webkit-keyframes prog6
+{
+  from{width:150px;}
+to{width:60%;}
+}
+
+/* Firefox */
+@-moz-keyframes prog6
+{
+  from{width:150px;}
+to{width:60%;}
+}
+
+/* Opera */
+@-o-keyframes prog6
+{
+  from{width:150px;}
+to{width:60%;}
+}
+
 
 .area{
   z-index:1;

@@ -17,17 +17,17 @@
 
   <title>
     
-      What's Jekyll? &middot; Lanyon
+      Ajaxify your Forms? &middot; Achref Tlili
     
   </title>
 
   
-  <meta property="og:title" content="What's Jekyll?">
+  <meta property="og:title" content="Ajaxify your Forms?">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="http://lanyon.getpoole.com/2013/12/31/whats-jekyll/">
+  <meta property="og:url" content="https://achreftlili.github.io//2015/08/22/Ajaxify-your-form/">
   <meta property="og:description" content="">
   
-  <meta property="article:published_time" content="2013-12-31T00:00:00+01:00">
+  <meta property="article:published_time" content="2015-08-22T00:00:00+02:00">
   
   
   
@@ -35,7 +35,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@couac">
   <meta name="twitter:creator" content="@couac">
-  <meta name="twitter:title" content="What's Jekyll?">
+  <meta name="twitter:title" content="Ajaxify your Forms?">
   <meta name="twitter:description" content="">
   
 
@@ -65,7 +65,7 @@
 <!-- Toggleable sidebar -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-item">
-    <p>A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that places the utmost gravity on content with a hidden drawer. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.</p>
+    <p>Achref Tlili Blog for web development</p>
  <img src="/images/me.jpg" alt="Mountain View" style="width:100px;height:130px;">
   </div>
 
@@ -86,24 +86,16 @@
     
       
         
+          <a class="sidebar-nav-item" href="/Blog_purpose/">Purpose  !</a>
+        
+      
+    
+      
+        
           <a class="sidebar-nav-item" href="/about/">About Tlili achref</a>
         
       
     
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/books/">Bookshelf</a>
-        
-      
-    
-      
-        
-      
-    
-      
-        
       
     
       
@@ -126,16 +118,17 @@
     </span>
   </nav>
 
+
   <div class="sidebar-item">
     <ul class="social-links">
       <li>
-        <i class="fa fa-github"></i>&nbsp;<a href="http://www.github.com/willdurand">GitHub</a>
+        <i class="fa fa-github"></i>&nbsp;<a target="_blank"href="http://www.github.com/achreftlili">GitHub</a>
       </li>
       <li>
-        <i class="fa fa-linkedin"></i>&nbsp;<a href="http://linkedin.com/in/williamdurand">LinkedIn</a>
+        <i class="fa fa-linkedin"></i>&nbsp;<a target="_blank" href="https://tn.linkedin.com/pub/tlili-achref/a2/857/951">LinkedIn</a>
       </li>
       <li>
-        <i class="fa fa-twitter"></i>&nbsp;<a href="http://www.twitter.com/couac">Twitter</a>
+        <i class="fa fa-twitter"></i>&nbsp;<a target="_blank" href="http://www.twitter.com/Audiovisuelle3">Twitter</a>
       </li>
     </ul>
   </div>
@@ -148,25 +141,37 @@
       <div class="masthead">
         <div class="container">
           <h3 class="masthead-title">
-            <a href="/" title="Home">Lanyon</a>
-            <small>A Jekyll theme</small>
+            <a href="/" title="Home">Achref Tlili</a>
+            <small></small>
           </h3>
         </div>
       </div>
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">What's Jekyll?</h1>
-  <span class="post-date">31 Dec 2013</span>
-  <p><a href="http://jekyllrb.com">Jekyll</a> is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes. From <a href="https://github.com/mojombo/jekyll/blob/master/README.markdown">the project&#39;s readme</a>:</p>
+  <h1 class="post-title">Ajaxify your Forms?</h1>
+  <span class="post-date">22 Aug 2015</span>
+  <p>In this post we gonna see how to add ajax to our forms in symfony which will help us create ajaxified web pages in seconds so focus :p</p>
 
 <blockquote>
-<p>Jekyll is a simple, blog aware, static site generator. It takes a template directory [...] and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub.</p>
+<p>first think we gonna create a javascript function which we will use to get the response of a specific route this function get two parameters, the first is the route path the other one is the id of div where you one put the response of the route .</p>
 </blockquote>
 
-<p>It&#39;s an immensely useful tool and one we encourage you to use here with Lanyon.</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">routeBringer</span><span class="p">(</span><span class="nx">route</span><span class="p">,</span><span class="nx">id_of_div</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="o">+</span><span class="nx">id_of_div</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">&quot;Chargement ...&quot;</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+      <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+      <span class="nx">url</span><span class="o">:</span> <span class="nx">route</span><span class="p">,</span>
+      <span class="nx">data</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nx">cache</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">html</span><span class="p">){</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="o">+</span><span class="nx">idul</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">html</span><span class="p">);</span> <span class="p">}});</span>
+<span class="p">}</span></code></pre></div>
 
-<p>Find out more by <a href="https://github.com/mojombo/jekyll">visiting the project on GitHub</a>.</p>
+<p>after that you added this methode we gonna use it in button for example  button that create a new entry</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">button</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;btn btn-sm btn-success&quot;</span> <span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;newContact()&quot;</span><span class="o">&gt;</span>
+<span class="nx">Ajouter</span> <span class="nx">Contact</span>
+   <span class="o">&lt;</span><span class="err">/button&gt;</span></code></pre></div>
 
 </div>
 
@@ -176,27 +181,9 @@
     
       <li>
         <h3>
-          <a href="/2014/01/07/int-ffff-roducing-lanyon%20/">
-            Int Ffff Roducing Lanyon 
-            <small>07 Jan 2014</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2014/01/03/introducing-lanyon/">
-            Introducing Lanyon
-            <small>03 Jan 2014</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/2014/01/01/example-content/">
-            Example content
-            <small>01 Jan 2014</small>
+          <a href="/2015/08/22/Ajaxify-your-forms/">
+            What's Jekyll?
+            <small>22 Aug 2015</small>
           </a>
         </h3>
       </li>
