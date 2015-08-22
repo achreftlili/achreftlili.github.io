@@ -13,7 +13,7 @@ title: About Tlili achref
  with one year experience in web development projects on PHP5 / Symfony2.
  <br/>Intervention in different phases of the project cycle: specification, implementation and test. Having a team spirit, open and responsive to new opportunities.
  I realised this Blog using Lanyon which It's made by [@mdo](https://twitter.com/mdo).
- 
+
 ## projects realised:
 - Project name: Infra<br/>
  Project Client: Ooredoo<br/>
