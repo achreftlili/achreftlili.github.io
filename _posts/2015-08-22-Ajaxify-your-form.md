@@ -106,7 +106,7 @@ function postForm( $form, callback ){
 {% endhighlight %}
 
 
->  after reading the function postForm we notice that there is two section the first one we put every values of our form (first attribute) in values vary after turning with.serializeArray () our form passed in the first parameter to a Javascript Array of object so that it will be ready to be encoded as a JSON string the second part is $. Ajax, jQuery function that will send our form submit as Ajax request in the success of our Ajax request the function callback will be called with data as a parameter this function will put the response html to our div result
+> after reading the function postForm we notice that there is two section the first one we put every values of our form (first attribute) in values vary after turning with.serializeArray () our form passed in the first parameter to a Javascript Array of object so that it will be ready to be encoded as a JSON string the second part is $. Ajax, jQuery function that will send our form submit as Ajax request in the success of our Ajax request the function callback will be called with data as a parameter this function will put the response html to our div result
 
 
 <h6>I hope that I helped you for understanding some Ajax work with Symfony sorry for my English !</h6>
