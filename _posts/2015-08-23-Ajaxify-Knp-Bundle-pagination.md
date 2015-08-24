@@ -195,7 +195,7 @@ public function slidespaginatorAction(Request $request) {
 
     //this is our main query that select our result data
     $query = $this->getDoctrine()->getManager()->createNativeQuery("select id ,prenom,nom ,email,adresse,tel from contact inner join "
-            . "(select id from contact  order by $sort $direction limit ? offset ?) as contact"
+            . "(select id from contact  order by id asc limit ? offset ?) as contact"
             . " using (id)", $rsm);
                 $query->setParameter(1, $limit);
                 $query->setParameter(2, $offset);
@@ -220,7 +220,7 @@ public function slidespaginatorAction(Request $request) {
 
 >So to recapitulate about this Post we have two action the first one is the container of our table and the other one is a dynamic action on our table which will be called with each switch of page number like Magic!!!
 
-i hope that this help you 
+i hope that this help you
 
 
 
