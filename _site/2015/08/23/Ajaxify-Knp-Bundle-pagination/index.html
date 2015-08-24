@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta property="og:locale" content="en_US">
+
+  <meta name="author" content="Mark Otto">
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <title>
+    
+      Ajaxify the Pagination of knp Paginator Bundle? &middot; Achref Tlili
+    
+  </title>
+
+  
+  <meta property="og:title" content="Ajaxify the Pagination of knp Paginator Bundle?">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://achreftlili.github.io//2015/08/23/Ajaxify-Knp-Bundle-pagination/">
+  <meta property="og:description" content="">
+  
+  <meta property="article:published_time" content="2015-08-23T00:00:00+02:00">
+  
+  
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@couac">
+  <meta name="twitter:creator" content="@couac">
+  <meta name="twitter:title" content="Ajaxify the Pagination of knp Paginator Bundle?">
+  <meta name="twitter:description" content="">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/lanyon.css">
+  <link rel="stylesheet" href="/css/skills.css">
+
+  <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+
+</head>
+
+
+  <body class="theme-base-02">
+
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>Achref Tlili Blog for web development</p>
+ <img src="/images/me.jpg" alt="Me" style="width:100px;height:130px;">
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/Blog_purpose/">Purpose  !</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About Tlili achref</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+    
+
+
+
+  <div class="sidebar-item">
+    <ul class="social-links">
+      <li>
+        <i class="fa fa-github"></i>&nbsp;<a target="_blank"href="http://www.github.com/achreftlili">GitHub</a>
+      </li>
+      <li>
+        <i class="fa fa-linkedin"></i>&nbsp;<a target="_blank" href="https://tn.linkedin.com/pub/tlili-achref/a2/857/951">LinkedIn</a>
+      </li>
+      <li>
+        <i class="fa fa-twitter"></i>&nbsp;<a target="_blank" href="http://www.twitter.com/Audiovisuelle3">Twitter</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">Achref Tlili</a>
+            <small></small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<div class="post">
+  <h1 class="post-title">Ajaxify the Pagination of knp Paginator Bundle?</h1>
+  <span class="post-date">23 Aug 2015</span>
+  <p><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script></p>
+
+<p>Ajaxify the Pagination of <a href="https://github.com/KnpLabs/KnpPaginatorBundle">knp Paginator</a><br>
+first of all you will need to have knp Paginator installed which is easy :p so first of all
+<h4>1-change the pagination view to bootstrap</h4></p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html">//you-Project/vendor/knplabs/knp-paginator-bundle/Resources/views/Pagination/pagination.html.twig
+
+{% set first = 1%}
+
+{% set previous = max(range(1, current-1)) %}
+{% set last = pagesNumber %}
+{% set next = min( last, current+1 ) %}
+{% set pages_range = range(max(first, current-3), min(last, current+3)) %}
+
+{% if pagesNumber &gt; 1 %}
+    {%set first = 1 %}
+    {%set last = pagesNumber %}
+    {%set query=  {}  %}
+    {%set pageParameterName = &#39;page&#39; %}
+
+<span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;pagination&quot;</span><span class="nt">&gt;</span>
+
+
+    {% if first is  defined and current != first %}
+        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;previous&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">onclick=</span><span class="s">&quot;routeBringer(&#39;{{ path(route, query|merge({(pageParameterName): previous&quot;</span><span class="err">}))</span>  <span class="err">}}&#39;,</span> <span class="err">&#39;</span><span class="na">table_div</span><span class="err">&#39;)&quot;</span> <span class="nt">&gt;</span>{{ &#39;Previous&#39;|trans }}&quot;<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+    {% else %}
+        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;disabled&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span&gt;</span>{{ &#39;Previous&#39;|trans }}<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+    {% endif %}
+
+
+
+
+
+    {% for page in pages_range %}
+        {% if page != current %}
+            <span class="nt">&lt;li</span> <span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">onclick=</span><span class="s">&quot;routeBringer(&#39;{{ path(route, query|merge({(pageParameterName): page&quot;</span><span class="err">}))</span>  <span class="err">}}&#39;,</span> <span class="err">&#39;</span><span class="na">table_div</span><span class="err">&#39;)&quot;</span> <span class="nt">&gt;</span>{{ page}}<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+        {% else %}
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;active&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;span&gt;</span>{{ page }}<span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+        {% endif %}
+
+    {% endfor %}
+
+
+
+
+    {% if last is defined and current != last %}
+        <span class="nt">&lt;li</span> <span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span>  <span class="na">onclick=</span><span class="s">&quot;routeBringer(&#39;{{ path(route, query|merge({(pageParameterName): next&quot;</span><span class="err">}))</span>  <span class="err">}}&#39;,</span> <span class="err">&#39;</span><span class="na">table_div</span><span class="err">&#39;)&quot;</span> <span class="nt">&gt;</span>{{ &#39;Next&#39;|trans }}<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+    {% else %}
+        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;disabled&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span&gt;</span>{{ &#39;Next&#39;|trans }}<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+    {% endif %}
+<span class="nt">&lt;/ul&gt;</span>
+{% endif %}</code></pre></div>
+
+<blockquote>
+<p>as you can notice in the twig code a call to routeBringer() function which is  exlpained in this <a href="">Post</a> so this function will use the $.ajax() to bring the response in a specific div
+i added this function in the three button type Previous,the number page button and in the next page button that will prevent the button from refreshing all the page with each pagination change  </p>
+</blockquote>
+
+<p>the previous twig will be used in our main page</p>
+
+<h4>2-How to reload the table with each pagination change</h4>
+
+<p>the goal of this post is help you create a main page that load the table with ajax like this screen shot</p>
+
+<p><img src="/images/mainpage.png" alt="Main Page" ></p>
+
+<p>the action of the previous page</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">public function indexpaginatorAction(Request $request) {</span>
+
+<span class="x">//this action bring only the container twig view that will call later the dynamic table with our ajax function</span>
+
+<span class="x">        return $this-&gt;render(&#39;ContactBundle:Contact:Paginatorindex.html.twig&#39;, array();</span>
+<span class="x">    }</span></code></pre></div>
+
+<p>the twig template:</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">{% extends &#39;::home.html.twig&#39; %}</span>
+
+
+<span class="x">{% block body %}</span>
+<span class="x">    &lt;div id=&quot;table_div&quot;&gt;</span>
+
+<span class="x">    &lt;/div&gt;</span>
+
+<span class="x">{% endblock  %}</span>
+
+<span class="x">{% block javascripts %}</span>
+
+<span class="x">        &lt;script src=&quot;{{ asset(&#39;assets/js/ajaxstand.js&#39;)  }}&quot;&gt;</span>
+
+<span class="x">        &lt;script&gt;</span>
+
+<span class="x">            $(document).ready(function () {</span>
+
+<span class="x">            routeBringer( &quot;  {{  path(&#39;slidepaginator&#39;) }}&quot;&#39;, &#39;table_div&#39;);//slidepaginator name of the route that bring the slide of your table,so when your page is loaded automatically the table will be loaded</span>
+<span class="x">           });</span>
+<span class="x">       &lt;/script&gt;</span>
+<span class="x">{% endblock  %}</span></code></pre></div>
+
+<blockquote>
+<p>after reading the twig template w notice that we gonna use the slidepaginator route this route will bring only the table</p>
+</blockquote>
+
+<p>the view of slidepaginator route</p>
+
+<p>the action of slidepaginator route</p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">public function slidespaginatorAction(Request $request) {</span>
+
+<span class="x">    $page = $request-&gt;query-&gt;get(&#39;page&#39;, 1);</span>
+
+<span class="x">    //count the number of row in Conatct Table ,that will help us in the request for the offset variable</span>
+<span class="x">    $myCount_old = $em-&gt;createQuery(&#39;SELECT COUNT(c) FROM Test1\ContactBundle\Entity\Contact c &#39;)</span>
+<span class="x">            -&gt;getSingleScalarResult();</span>
+
+<span class="x">    //we check if the number of row is bigger then our limit per page which is 4 you can change that by changing 4 by your prefered choice also the variable $limit</span>
+
+<span class="x">    if ($myCount_old &lt; 4) {</span>
+<span class="x">        $myCount = 1;</span>
+<span class="x">    } else {</span>
+<span class="x">        $mod = $myCount_old % 4;</span>
+<span class="x">        $myCount = (int) ($myCount_old / 4);</span>
+
+<span class="x">        if ($mod != 0) {</span>
+<span class="x">            $myCount = $myCount + 1;</span>
+<span class="x">        }</span>
+<span class="x">    }</span>
+<span class="x">    //the variable $mycount is the number of pages in your pagination</span>
+
+
+<span class="x">    $limit = 4;</span>
+<span class="x">    if ($page == 1) {</span>
+<span class="x">        $offset = 0;</span>
+<span class="x">    } else {</span>
+<span class="x">        $offset = ($page - 1) * $limit;</span>
+<span class="x">    }</span>
+
+<span class="x">    //the variable $offset is from where our query will begin the selection of row</span>
+
+
+
+<span class="x">    //with ResultSetMapping you can map arbitrary SQL code to objects</span>
+<span class="x">    $rsm = new ResultSetMapping();</span>
+<span class="x">    $rsm-&gt;addEntityResult(&#39;Test1\ContactBundle\Entity\Contact&#39;, &#39;c&#39;);</span>
+<span class="x">    $rsm-&gt;addFieldResult(&#39;c&#39;, &#39;id&#39;, &#39;id&#39;);</span>
+<span class="x">    $rsm-&gt;addFieldResult(&#39;c&#39;, &#39;nom&#39;, &#39;nom&#39;);</span>
+<span class="x">    $rsm-&gt;addFieldResult(&#39;c&#39;, &#39;prenom&#39;, &#39;prenom&#39;);</span>
+<span class="x">    $rsm-&gt;addFieldResult(&#39;c&#39;, &#39;adresse&#39;, &#39;adresse&#39;);</span>
+<span class="x">    $rsm-&gt;addFieldResult(&#39;c&#39;, &#39;email&#39;, &#39;email&#39;);</span>
+<span class="x">    $rsm-&gt;addFieldResult(&#39;c&#39;, &#39;tel&#39;, &#39;tel&#39;);</span>
+
+
+<span class="x">    //this is our main query that select our result data</span>
+<span class="x">    $query = $this-&gt;getDoctrine()-&gt;getManager()-&gt;createNativeQuery(&quot;select id ,prenom,nom ,email,adresse,tel from contact inner join &quot;</span>
+<span class="x">            . &quot;(select id from contact  order by $sort $direction limit ? offset ?) as contact&quot;</span>
+<span class="x">            . &quot; using (id)&quot;, $rsm);</span>
+<span class="x">                $query-&gt;setParameter(1, $limit);</span>
+<span class="x">                $query-&gt;setParameter(2, $offset);</span>
+<span class="x">    $queryres = $query-&gt;getResult();</span>
+<span class="x">    //I created this query to retrieve results with deferred join which will decrease the time of response</span>
+
+
+
+<span class="x">    $paginator = $this-&gt;get(&#39;knp_paginator&#39;);//call for knp_paginator service</span>
+
+<span class="x">    $pagination = $paginator-&gt;paginate(</span>
+<span class="x">            $queryres    //return only the $queryres variable</span>
+<span class="x">    );</span>
+
+
+<span class="x">    // send parameters to template</span>
+<span class="x">    return $this-&gt;render(&#39;ContactBundle:Contact:slidepaginator.html.twig&#39;, array(&#39;pagination&#39; =&gt; $pagination, &#39;number_row&#39; =&gt; $myCount_old, &#39;pages_number&#39; =&gt; $myCount, &#39;page&#39; =&gt; $page));</span>
+<span class="x">}</span></code></pre></div>
+
+<blockquote>
+<p>So to recapitulate about this Post we have two action the first one is the container of our table and the other one is a dynamic action on our table which will be called with each switch of page number like Magic!!!</p>
+</blockquote>
+
+<p>i hope that this help you </p>
+
+<p><section class="post-comments">
+  <h2>Comments</h2>
+  <div id="disqus_thread"></div></p>
+
+<p></section></p>
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'httpachreftliligithubio';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h5>
+          <a href="/2015/08/22/Ajaxify-your-form/">
+            Get Views with Ajax and Ajaxify their Forms!
+            <small>22 Aug 2015</small>
+          </a>
+        </h5>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

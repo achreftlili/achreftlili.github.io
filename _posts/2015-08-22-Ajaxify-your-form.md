@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Get Views with Ajax and Ajaxify their Forms?
+title: Get Views with Ajax and Ajaxify their Forms!
 ---
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
@@ -110,6 +110,7 @@ function postForm( $form, callback ){
 
 
 <h6>I hope that I helped you for understanding some Ajax work with Symfony sorry for my English !</h6>
+
 
 <section class="post-comments">
   <h2>Comments</h2>

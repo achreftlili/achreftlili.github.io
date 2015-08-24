@@ -8,7 +8,8 @@ exclude:   [ README.md, Gemfile, vendor, .*, bower.json ]
 # Use of `relative_permalinks` ensures post links from the index work properly.
 permalink:           pretty
 relative_permalinks: true
-
+sass:
+    sass_dir: _sass
 # Setup
 title:               Achref Tlili
 tagline:

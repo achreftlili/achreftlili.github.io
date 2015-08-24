@@ -4,7 +4,7 @@
  <title>Achref Tlili</title>
  <link href="https://achreftlili.github.io//atom.xml" rel="self"/>
  <link href="https://achreftlili.github.io//"/>
- <updated>2015-08-23T01:59:11+02:00</updated>
+ <updated>2015-08-24T21:07:14+02:00</updated>
  <id>https://achreftlili.github.io/</id>
  <author>
    <name>Mark Otto</name>
@@ -13,7 +13,229 @@
 
  
  <entry>
-   <title>Get Views with Ajax and Ajaxify their Forms?</title>
+   <title>Ajaxify the Pagination of knp Paginator Bundle?</title>
+   <link href="https://achreftlili.github.io//2015/08/23/Ajaxify-Knp-Bundle-pagination/"/>
+   <updated>2015-08-23T00:00:00+02:00</updated>
+   <id>https://achreftlili.github.io//2015/08/23/Ajaxify-Knp-Bundle-pagination</id>
+   <content type="html">&lt;p&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/default.min.css&quot;&gt;
+&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Ajaxify the Pagination of &lt;a href=&quot;https://github.com/KnpLabs/KnpPaginatorBundle&quot;&gt;knp Paginator&lt;/a&gt;&lt;br&gt;
+first of all you will need to have knp Paginator installed which is easy :p so first of all
+&lt;h4&gt;1-change the pagination view to bootstrap&lt;/h4&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;//you-Project/vendor/knplabs/knp-paginator-bundle/Resources/views/Pagination/pagination.html.twig
+
+{% set first = 1%}
+
+{% set previous = max(range(1, current-1)) %}
+{% set last = pagesNumber %}
+{% set next = min( last, current+1 ) %}
+{% set pages_range = range(max(first, current-3), min(last, current+3)) %}
+
+{% if pagesNumber &amp;gt; 1 %}
+    {%set first = 1 %}
+    {%set last = pagesNumber %}
+    {%set query=  {}  %}
+    {%set pageParameterName = &amp;#39;page&amp;#39; %}
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;pagination&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+
+    {% if first is  defined and current != first %}
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;previous&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;onclick=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;routeBringer(&amp;#39;{{ path(route, query|merge({(pageParameterName): previous&amp;quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}))&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;}}&amp;#39;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;table_div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;#39;)&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{{ &amp;#39;Previous&amp;#39;|trans }}&amp;quot;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    {% else %}
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;disabled&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&amp;gt;&lt;/span&gt;{{ &amp;#39;Previous&amp;#39;|trans }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    {% endif %}
+
+
+
+
+
+    {% for page in pages_range %}
+        {% if page != current %}
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;onclick=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;routeBringer(&amp;#39;{{ path(route, query|merge({(pageParameterName): page&amp;quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}))&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;}}&amp;#39;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;table_div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;#39;)&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{{ page}}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+        {% else %}
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;active&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&amp;gt;&lt;/span&gt;{{ page }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+        {% endif %}
+
+    {% endfor %}
+
+
+
+
+    {% if last is defined and current != last %}
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt;  &lt;span class=&quot;na&quot;&gt;onclick=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;routeBringer(&amp;#39;{{ path(route, query|merge({(pageParameterName): next&amp;quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}))&lt;/span&gt;  &lt;span class=&quot;err&quot;&gt;}}&amp;#39;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;table_div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;#39;)&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{{ &amp;#39;Next&amp;#39;|trans }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    {% else %}
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;disabled&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&amp;gt;&lt;/span&gt;{{ &amp;#39;Next&amp;#39;|trans }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+    {% endif %}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+{% endif %}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;as you can notice in the twig code a call to routeBringer() function which is  exlpained in this &lt;a href=&quot;&quot;&gt;Post&lt;/a&gt; so this function will use the $.ajax() to bring the response in a specific div
+i added this function in the three button type Previous,the number page button and in the next page button that will prevent the button from refreshing all the page with each pagination change  &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;the previous twig will be used in our main page&lt;/p&gt;
+
+&lt;h4&gt;2-How to reload the table with each pagination change&lt;/h4&gt;
+
+&lt;p&gt;the goal of this post is help you create a main page that load the table with ajax like this screen shot&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mainpage.png&quot; alt=&quot;Main Page&quot; &gt;&lt;/p&gt;
+
+&lt;p&gt;the action of the previous page&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;x&quot;&gt;public function indexpaginatorAction(Request $request) {&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;//this action bring only the container twig view that will call later the dynamic table with our ajax function&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;        return $this-&amp;gt;render(&amp;#39;ContactBundle:Contact:Paginatorindex.html.twig&amp;#39;, array();&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    }&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;the twig template:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;x&quot;&gt;{% extends &amp;#39;::home.html.twig&amp;#39; %}&lt;/span&gt;
+
+
+&lt;span class=&quot;x&quot;&gt;{% block body %}&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    &amp;lt;div id=&amp;quot;table_div&amp;quot;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;    &amp;lt;/div&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;{% endblock  %}&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;{% block javascripts %}&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;        &amp;lt;script src=&amp;quot;{{ asset(&amp;#39;assets/js/ajaxstand.js&amp;#39;)  }}&amp;quot;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;        &amp;lt;script&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;            $(document).ready(function () {&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;            routeBringer( &amp;quot;  {{  path(&amp;#39;slidepaginator&amp;#39;) }}&amp;quot;&amp;#39;, &amp;#39;table_div&amp;#39;);//slidepaginator name of the route that bring the slide of your table,so when your page is loaded automatically the table will be loaded&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;           });&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;       &amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;{% endblock  %}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;after reading the twig template w notice that we gonna use the slidepaginator route this route will bring only the table&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;the view of slidepaginator route&lt;/p&gt;
+
+&lt;p&gt;the action of slidepaginator route&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;x&quot;&gt;public function slidespaginatorAction(Request $request) {&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;    $page = $request-&amp;gt;query-&amp;gt;get(&amp;#39;page&amp;#39;, 1);&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;    //count the number of row in Conatct Table ,that will help us in the request for the offset variable&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    $myCount_old = $em-&amp;gt;createQuery(&amp;#39;SELECT COUNT(c) FROM Test1\ContactBundle\Entity\Contact c &amp;#39;)&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;            -&amp;gt;getSingleScalarResult();&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;    //we check if the number of row is bigger then our limit per page which is 4 you can change that by changing 4 by your prefered choice also the variable $limit&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;    if ($myCount_old &amp;lt; 4) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;        $myCount = 1;&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    } else {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;        $mod = $myCount_old % 4;&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;        $myCount = (int) ($myCount_old / 4);&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;        if ($mod != 0) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;            $myCount = $myCount + 1;&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;        }&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    }&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    //the variable $mycount is the number of pages in your pagination&lt;/span&gt;
+
+
+&lt;span class=&quot;x&quot;&gt;    $limit = 4;&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    if ($page == 1) {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;        $offset = 0;&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    } else {&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;        $offset = ($page - 1) * $limit;&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    }&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;    //the variable $offset is from where our query will begin the selection of row&lt;/span&gt;
+
+
+
+&lt;span class=&quot;x&quot;&gt;    //with ResultSetMapping you can map arbitrary SQL code to objects&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    $rsm = new ResultSetMapping();&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    $rsm-&amp;gt;addEntityResult(&amp;#39;Test1\ContactBundle\Entity\Contact&amp;#39;, &amp;#39;c&amp;#39;);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    $rsm-&amp;gt;addFieldResult(&amp;#39;c&amp;#39;, &amp;#39;id&amp;#39;, &amp;#39;id&amp;#39;);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    $rsm-&amp;gt;addFieldResult(&amp;#39;c&amp;#39;, &amp;#39;nom&amp;#39;, &amp;#39;nom&amp;#39;);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    $rsm-&amp;gt;addFieldResult(&amp;#39;c&amp;#39;, &amp;#39;prenom&amp;#39;, &amp;#39;prenom&amp;#39;);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    $rsm-&amp;gt;addFieldResult(&amp;#39;c&amp;#39;, &amp;#39;adresse&amp;#39;, &amp;#39;adresse&amp;#39;);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    $rsm-&amp;gt;addFieldResult(&amp;#39;c&amp;#39;, &amp;#39;email&amp;#39;, &amp;#39;email&amp;#39;);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    $rsm-&amp;gt;addFieldResult(&amp;#39;c&amp;#39;, &amp;#39;tel&amp;#39;, &amp;#39;tel&amp;#39;);&lt;/span&gt;
+
+
+&lt;span class=&quot;x&quot;&gt;    //this is our main query that select our result data&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    $query = $this-&amp;gt;getDoctrine()-&amp;gt;getManager()-&amp;gt;createNativeQuery(&amp;quot;select id ,prenom,nom ,email,adresse,tel from contact inner join &amp;quot;&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;            . &amp;quot;(select id from contact  order by $sort $direction limit ? offset ?) as contact&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;            . &amp;quot; using (id)&amp;quot;, $rsm);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;                $query-&amp;gt;setParameter(1, $limit);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;                $query-&amp;gt;setParameter(2, $offset);&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    $queryres = $query-&amp;gt;getResult();&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    //I created this query to retrieve results with deferred join which will decrease the time of response&lt;/span&gt;
+
+
+
+&lt;span class=&quot;x&quot;&gt;    $paginator = $this-&amp;gt;get(&amp;#39;knp_paginator&amp;#39;);//call for knp_paginator service&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;    $pagination = $paginator-&amp;gt;paginate(&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;            $queryres    //return only the $queryres variable&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    );&lt;/span&gt;
+
+
+&lt;span class=&quot;x&quot;&gt;    // send parameters to template&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;    return $this-&amp;gt;render(&amp;#39;ContactBundle:Contact:slidepaginator.html.twig&amp;#39;, array(&amp;#39;pagination&amp;#39; =&amp;gt; $pagination, &amp;#39;number_row&amp;#39; =&amp;gt; $myCount_old, &amp;#39;pages_number&amp;#39; =&amp;gt; $myCount, &amp;#39;page&amp;#39; =&amp;gt; $page));&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;So to recapitulate about this Post we have two action the first one is the container of our table and the other one is a dynamic action on our table which will be called with each switch of page number like Magic!!!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;i hope that this help you &lt;/p&gt;
+
+&lt;p&gt;&lt;section class=&quot;post-comments&quot;&gt;
+  &lt;h2&gt;Comments&lt;/h2&gt;
+  &lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/section&gt;&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = &#39;httpachreftliligithubio&#39;;
+
+    /* * * DON&#39;T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement(&#39;script&#39;); dsq.type = &#39;text/javascript&#39;; dsq.async = true;
+        dsq.src = &#39;//&#39; + disqus_shortname + &#39;.disqus.com/embed.js&#39;;
+        (document.getElementsByTagName(&#39;head&#39;)[0] || document.getElementsByTagName(&#39;body&#39;)[0]).appendChild(dsq);
+    })();
+&lt;/script&gt;
+
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot; rel=&quot;nofollow&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Get Views with Ajax and Ajaxify their Forms!</title>
    <link href="https://achreftlili.github.io//2015/08/22/Ajaxify-your-form/"/>
    <updated>2015-08-22T00:00:00+02:00</updated>
    <id>https://achreftlili.github.io//2015/08/22/Ajaxify-your-form</id>
@@ -119,19 +341,23 @@
 
 &lt;p&gt;&lt;section class=&quot;post-comments&quot;&gt;
   &lt;h2&gt;Comments&lt;/h2&gt;
-  &lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
-&lt;/section&gt;&lt;/p&gt;
+  &lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/section&gt;&lt;/p&gt;
 
 &lt;script type=&quot;text/javascript&quot;&gt;
-    var disqus_shortname = &#39;achreftlili&#39;;
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = &#39;httpachreftliligithubio&#39;;
+
+    /* * * DON&#39;T EDIT BELOW THIS LINE * * */
     (function() {
         var dsq = document.createElement(&#39;script&#39;); dsq.type = &#39;text/javascript&#39;; dsq.async = true;
-        dsq.src = &#39;http://&#39; + disqus_shortname + &#39;.disqus.com/embed.js&#39;;
+        dsq.src = &#39;//&#39; + disqus_shortname + &#39;.disqus.com/embed.js&#39;;
         (document.getElementsByTagName(&#39;head&#39;)[0] || document.getElementsByTagName(&#39;body&#39;)[0]).appendChild(dsq);
     })();
 &lt;/script&gt;
 
-&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;http://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot; rel=&quot;nofollow&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
 </content>
  </entry>
  
