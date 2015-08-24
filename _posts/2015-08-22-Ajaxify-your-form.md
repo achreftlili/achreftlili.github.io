@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Get Views with Ajax and Ajaxify their Forms!
+tags: Symfony
 ---
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
@@ -110,23 +111,3 @@ function postForm( $form, callback ){
 
 
 <h6>I hope that I helped you for understanding some Ajax work with Symfony sorry for my English !</h6>
-
-
-<section class="post-comments">
-  <h2>Comments</h2>
-  <div id="disqus_thread"></div>
-
-</section>
-
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = 'httpachreftliligithubio';
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>

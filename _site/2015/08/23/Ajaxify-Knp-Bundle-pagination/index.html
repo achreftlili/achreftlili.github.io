@@ -31,6 +31,8 @@
   
   
   
+  <meta content="Symfony" property="article:tag">
+  
   
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@couac">
@@ -106,6 +108,14 @@
         
       
     
+      
+    
+      
+        
+      
+    
+      
+        
       
     
 
@@ -313,7 +323,7 @@ i added this function in the three button type Previous,the number page button a
 
 <span class="x">    //this is our main query that select our result data</span>
 <span class="x">    $query = $this-&gt;getDoctrine()-&gt;getManager()-&gt;createNativeQuery(&quot;select id ,prenom,nom ,email,adresse,tel from contact inner join &quot;</span>
-<span class="x">            . &quot;(select id from contact  order by $sort $direction limit ? offset ?) as contact&quot;</span>
+<span class="x">            . &quot;(select id from contact  order by id asc limit ? offset ?) as contact&quot;</span>
 <span class="x">            . &quot; using (id)&quot;, $rsm);</span>
 <span class="x">                $query-&gt;setParameter(1, $limit);</span>
 <span class="x">                $query-&gt;setParameter(2, $offset);</span>
@@ -337,28 +347,39 @@ i added this function in the three button type Previous,the number page button a
 <p>So to recapitulate about this Post we have two action the first one is the container of our table and the other one is a dynamic action on our table which will be called with each switch of page number like Magic!!!</p>
 </blockquote>
 
-<p>i hope that this help you </p>
+<p>i hope that this help you</p>
 
-<p><section class="post-comments">
-  <h2>Comments</h2>
-  <div id="disqus_thread"></div></p>
 
-<p></section></p>
 
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = 'httpachreftliligithubio';
+  <section class="post-comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
 
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
+  </section>
 
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES * * */
+      var disqus_shortname = 'httpachreftliligithubio';
 
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <h1>Tag Cloud</h1>
+  
+  
+   <span class="site-tag">
+      <a href="/tag/Symfony/"
+          style="font-size: 88%">
+              Symfony (2)
+      </a>
+  </span>
+  
 </div>
 
 

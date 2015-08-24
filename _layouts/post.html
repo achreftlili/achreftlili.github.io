@@ -6,6 +6,37 @@ layout: default
   <h1 class="post-title">{{ page.title }}</h1>
   <span class="post-date">{{ page.date | date_to_string }}</span>
   {{ content }}
+
+
+  <section class="post-comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+
+  </section>
+
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES * * */
+      var disqus_shortname = 'httpachreftliligithubio';
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <h1>Tag Cloud</h1>
+  {% assign tags = site.tags | sort %}
+  {% for tag in tags %}
+   <span class="site-tag">
+      <a href="/tag/{{ tag | first | slugify }}/"
+          style="font-size: {{ tag | last | size  |  times: 4 | plus: 80  }}%">
+              {{ tag[0] | replace:'-', ' ' }} ({{ tag | last | size }})
+      </a>
+  </span>
+  {% endfor %}
 </div>
 
 

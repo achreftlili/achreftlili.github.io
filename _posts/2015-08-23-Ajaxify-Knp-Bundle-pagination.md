@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Ajaxify the Pagination of knp Paginator Bundle?
+tags: Symfony
 ---
 
 
@@ -221,25 +222,3 @@ public function slidespaginatorAction(Request $request) {
 >So to recapitulate about this Post we have two action the first one is the container of our table and the other one is a dynamic action on our table which will be called with each switch of page number like Magic!!!
 
 i hope that this help you
-
-
-
-
-<section class="post-comments">
-  <h2>Comments</h2>
-  <div id="disqus_thread"></div>
-
-</section>
-
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = 'httpachreftliligithubio';
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
