@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta property="og:locale" content="en_US">
+
+  <meta name="author" content="Mark Otto">
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <title>
+    
+      Download & upload files in data base with symfony! &middot; Achref Tlili
+    
+  </title>
+
+  
+  <meta property="og:title" content="Download & upload files in data base with symfony!">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://achreftlili.github.io//2015/08/24/Download-upload-files-in-data-base-with-symfony-form/">
+  <meta property="og:description" content="">
+  
+  <meta property="article:published_time" content="2015-08-24T00:00:00+02:00">
+  
+  
+  
+  <meta content="Symfony-Files" property="article:tag">
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@couac">
+  <meta name="twitter:creator" content="@couac">
+  <meta name="twitter:title" content="Download & upload files in data base with symfony!">
+  <meta name="twitter:description" content="">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/lanyon.css">
+  <link rel="stylesheet" href="/css/skills.css">
+
+  <link rel="stylesheet" href="/css/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+
+</head>
+
+
+  <body class="theme-base-02">
+
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>Achref Tlili Blog for web development</p>
+ <img src="/images/me.jpg" alt="Me" style="width:100px;height:130px;">
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/Blog_purpose/">Purpose  !</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About Tlili achref</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+
+
+
+  <div class="sidebar-item">
+    <ul class="social-links">
+      <li>
+        <i class="fa fa-github"></i>&nbsp;<a target="_blank"href="http://www.github.com/achreftlili">GitHub</a>
+      </li>
+      <li>
+        <i class="fa fa-linkedin"></i>&nbsp;<a target="_blank" href="https://tn.linkedin.com/pub/tlili-achref/a2/857/951">LinkedIn</a>
+      </li>
+      <li>
+        <i class="fa fa-twitter"></i>&nbsp;<a target="_blank" href="http://www.twitter.com/Audiovisuelle3">Twitter</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">Achref Tlili</a>
+            <small></small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<div class="post">
+  <h1 class="post-title">Download & upload files in data base with symfony!</h1>
+  <span class="post-date">24 Aug 2015</span>
+  <p><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script></p>
+
+<blockquote>
+<p>Hey every body  for this Post i am gonna share with you how you upload files in your database and next how to download them  </p>
+</blockquote>
+
+<h5>1-The Schema of our Entity "Files"</h5>
+
+<p>we gonna start with the Entity File which will be used in this Post</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html">namespace Acme\Bundle\FileBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * File
+ */
+class File
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var string
+     */
+    private $type;
+
+    /**
+     * @var \DateTime
+     */
+    private $creationDate;
+
+    /**
+     * @var string
+     */
+    private $data;
+
+
+
+    /**
+     * @var string
+     */
+    private $origName;
+
+    /**
+     * @var string
+     */
+    private $size;
+
+
+    /**
+     * @var string
+     */
+    private $extend;
+    /**
+     * Set extend
+     *
+     * @param string $extend
+     */
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this-&gt;id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return File
+     */
+    public function setName($name)
+    {
+        $this-&gt;name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this-&gt;name;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return File
+     */
+    public function setType($type)
+    {
+        $this-&gt;type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this-&gt;type;
+    }
+
+    /**
+     * Set creationDate
+     *
+     * @param \DateTime $creationDate
+     * @return File
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this-&gt;creationDate = $creationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get creationDate
+     *
+     * @return \DateTime
+     */
+    public function getCreationDate()
+    {
+        return $this-&gt;creationDate;
+    }
+
+    /**
+     * Set data
+     *
+     * @param string $data
+     * @return File
+     */
+    public function setData($data)
+    {
+        $this-&gt;data = $data;
+
+        return $this;
+    }
+
+    /**
+     * Get data
+     *
+     * @return string
+     */
+    public function getData()
+    {
+        return $this-&gt;data;
+    }
+
+    /**
+     * Set origName
+     *
+     * @param string $origName
+     * @return File
+     */
+    public function setOrigName($origName)
+    {
+        $this-&gt;origName = $origName;
+
+        return $this;
+    }
+
+    /**
+     * Get origName
+     *
+     * @return string
+     */
+    public function getOrigName()
+    {
+        return $this-&gt;origName;
+    }
+
+    /**
+     * Set size
+     *
+     * @param string $size
+     * @return File
+     */
+    public function setSize($size)
+    {
+        $this-&gt;size = $size;
+
+        return $this;
+    }
+
+    /**
+     * Get size
+     *
+     * @return string
+     */
+    public function getSize()
+    {
+        return $this-&gt;size;
+    }
+
+    /**
+     * Set extend
+     *
+     * @param string $extend
+     * @return File
+     */
+    public function setExtend($extend)
+    {
+        $this-&gt;extend = $extend;
+
+        return $this;
+    }
+
+    /**
+     * Get extend
+     *
+     * @return string
+     */
+    public function getExtend()
+    {
+        return $this-&gt;extend;
+    }
+}</code></pre></div>
+
+<p>next we have the mapping of the entity with yml</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html">Acme\Bundle\FileBundle\Entity\File:
+    type: entity
+    table: file
+    indexes:
+        site_idx:
+            columns:
+                - id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        type:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        creationDate:
+            type: datetime
+            nullable: false
+            default: &#39;0000-00-00 00:00:00&#39;
+            column: creation_date
+        data:
+            type: blob
+            nullable: true
+            length: null
+            fixed: false
+        origName:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            column: orig_name
+        size:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            column: size
+        extend:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+    lifecycleCallbacks: {  }</code></pre></div>
+
+
+
+  <section class="post-comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+
+  </section>
+
+  <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES * * */
+      var disqus_shortname = 'httpachreftliligithubio';
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <h1>Tag Cloud</h1>
+  
+  
+   <span class="site-tag">
+      <a href="/tag/Symfony/"
+          style="font-size: 88%">
+              Symfony (2)
+      </a>
+  </span>
+  
+   <span class="site-tag">
+      <a href="/tag/Symfony-Files/"
+          style="font-size: 84%">
+              Symfony Files (1)
+      </a>
+  </span>
+  
+</div>
+
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h5>
+          <a href="/2015/08/23/Ajaxify-Knp-Bundle-pagination/">
+            Ajaxify the Pagination of knp Paginator Bundle?
+            <small>23 Aug 2015</small>
+          </a>
+        </h5>
+      </li>
+    
+      <li>
+        <h5>
+          <a href="/2015/08/22/Ajaxify-your-form/">
+            Get Views with Ajax and Ajaxify their Forms!
+            <small>22 Aug 2015</small>
+          </a>
+        </h5>
+      </li>
+    
+  </ul>
+</div>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>
