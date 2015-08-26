@@ -4,7 +4,7 @@
  <title>Achref Tlili</title>
  <link href="https://achreftlili.github.io//atom.xml" rel="self"/>
  <link href="https://achreftlili.github.io//"/>
- <updated>2015-08-26T22:56:05+02:00</updated>
+ <updated>2015-08-27T01:13:42+02:00</updated>
  <id>https://achreftlili.github.io/</id>
  <author>
    <name>Mark Otto</name>
@@ -14,14 +14,14 @@
  
  <entry>
    <title>Download & upload files in data base with symfony!</title>
-   <link href="https://achreftlili.github.io//2015/08/24/Download-upload-files-in-data-base-with-symfony-form/"/>
-   <updated>2015-08-24T00:00:00+02:00</updated>
-   <id>https://achreftlili.github.io//2015/08/24/Download-upload-files-in-data-base-with-symfony-form</id>
+   <link href="https://achreftlili.github.io//2015/08/27/Download-upload-files-in-data-base-with-symfony-form/"/>
+   <updated>2015-08-27T00:00:00+02:00</updated>
+   <id>https://achreftlili.github.io//2015/08/27/Download-upload-files-in-data-base-with-symfony-form</id>
    <content type="html">&lt;p&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/default.min.css&quot;&gt;
 &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;Hey every body  for this Post i am gonna share with you how you upload files in your database and next how to download them  &lt;/p&gt;
+&lt;p&gt;Hey every body for this Post I am gonna share with you how you upload files in your database and next how to download them  &lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h5&gt;1-The Schema of our Entity &quot;Files&quot;&lt;/h5&gt;
@@ -62,13 +62,6 @@ class File
      */
     private $data;
 
-
-
-    /**
-     * @var string
-     */
-    private $origName;
-
     /**
      * @var string
      */
@@ -77,12 +70,6 @@ class File
 
     /**
      * @var string
-     */
-    private $extend;
-    /**
-     * Set extend
-     *
-     * @param string $extend
      */
 
     /**
@@ -188,29 +175,6 @@ class File
     }
 
     /**
-     * Set origName
-     *
-     * @param string $origName
-     * @return File
-     */
-    public function setOrigName($origName)
-    {
-        $this-&amp;gt;origName = $origName;
-
-        return $this;
-    }
-
-    /**
-     * Get origName
-     *
-     * @return string
-     */
-    public function getOrigName()
-    {
-        return $this-&amp;gt;origName;
-    }
-
-    /**
      * Set size
      *
      * @param string $size
@@ -233,29 +197,7 @@ class File
         return $this-&amp;gt;size;
     }
 
-    /**
-     * Set extend
-     *
-     * @param string $extend
-     * @return File
-     */
-    public function setExtend($extend)
-    {
-        $this-&amp;gt;extend = $extend;
-
-        return $this;
-    }
-
-    /**
-     * Get extend
-     *
-     * @return string
-     */
-    public function getExtend()
-    {
-        return $this-&amp;gt;extend;
-    }
-}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Next we add the mapping of the entity with yml&lt;/p&gt;
 
@@ -295,29 +237,125 @@ class File
             nullable: true
             length: null
             fixed: false
-        origName:
-            type: string
-            nullable: true
-            length: 100
-            fixed: false
-            column: orig_name
+
         size:
             type: string
             nullable: true
             length: 100
             fixed: false
             column: size
-        extend:
-            type: string
-            nullable: true
-            length: 20
-            fixed: false
+
     lifecycleCallbacks: {  }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h5&gt;2-upload Action&lt;/h5&gt;
+&lt;h5&gt;2-Generate the CRUD of the Entity File&lt;/h5&gt;
+
+&lt;p&gt;for generating the CRUD we run in our project file the command &amp;quot;app/console doctrine: generate: crud&amp;quot; like the picture below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/CRUD.png&quot; alt=&quot;Main Page&quot; &gt;&lt;/p&gt;
+
+&lt;h5&gt;3-change the Form builder of the File Entity&lt;/h5&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;public function buildForm(FormBuilderInterface $builder, array $options)
+   {
+       $builder// for all this attributs w shall delete them
+           -&amp;gt;add(&amp;#39;name&amp;#39;)
+           -&amp;gt;add(&amp;#39;type&amp;#39;)
+           -&amp;gt;add(&amp;#39;creationDate&amp;#39;)
+           -&amp;gt;add(&amp;#39;data&amp;#39;)
+           -&amp;gt;add(&amp;#39;size&amp;#39;)
+       ;
+   }
+   // for all these attributes we shall delete them
+   =&amp;gt;Result
+
+   public function buildForm(FormBuilderInterface $builder, array $options)
+      {
+          $builder// for all this attributs w shall delete them
+
+          ;
+      }
+      //in this case we will have an empty form with a submit button so we will add a file input form&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5&gt;4-Add the file input in new.html.twig&lt;/h5&gt;
+
+&lt;p&gt;we will add a file input with name &amp;quot;myFile&amp;quot; this will be used in the submit action &amp;quot;create action&amp;quot;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;{% extends &amp;#39;::base.html.twig&amp;#39; %}
+
+{% block body -%}
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;File creation&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+    {{ form_start(form,{ &amp;#39;attr&amp;#39;: {&amp;#39;enctype&amp;#39;: &amp;#39;multipart/form-data&amp;#39;,&amp;#39;id&amp;#39;: &amp;#39;file_upload_form&amp;#39;  }  } ) }}
+//with enctype: &amp;#39;multipart/form-data&amp;#39; No characters are encoded. This value is required when you are using forms that have //a file upload control
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt;   &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;file&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;myFile&amp;quot;&lt;/span&gt;  &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    //you will need to put it inside the form like this or add it in the form builder
+    {{ form_end(form) }}
+
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;record_actions&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;{{ path(&amp;#39;file&amp;#39;) }}&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            Back to the list
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+{% endblock %}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5&gt;5-change the create Action&lt;/h5&gt;
+
+&lt;p&gt;changing the create action so that the file selected will be saved correctly&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;if ($form-&amp;gt;isValid()) {//if the form is validated
+
+           $em = $this-&amp;gt;getDoctrine()-&amp;gt;getManager();
+
+           $entity-&amp;gt;setCreationDate(new \DateTime());//setting the different variables of our file
+           $entity-&amp;gt;setSize($_FILES[&amp;#39;myFile&amp;#39;][&amp;#39;size&amp;#39;]);
+           $entity-&amp;gt;setName($_FILES[&amp;#39;myFile&amp;#39;][&amp;#39;name&amp;#39;]);
+           $entity-&amp;gt;setType($_FILES[&amp;#39;myFile&amp;#39;][&amp;#39;type&amp;#39;]);
+           $entity-&amp;gt;setData(file_get_contents($_FILES[&amp;#39;myFile&amp;#39;][&amp;#39;tmp_name&amp;#39;]));
+           //the attribute Data is the most important one because it&amp;#39;s where we put our file Data
+
+           $em-&amp;gt;persist($entity);//persist the file
+           $em-&amp;gt;flush();
+         }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;we will begin with the upload action which will create file in our database&lt;/p&gt;
+&lt;p&gt;now we can upload any file in our database next we will see how to download them&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h5&gt;5-create Download Action&lt;/h5&gt;
+
+&lt;p&gt;we gonna create new action which will download our files by giving the id&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;//the route name is &amp;quot;file_download&amp;quot;
+public function downloadAction($id) {
+        $em = $this-&amp;gt;getDoctrine()-&amp;gt;getManager();
+
+        $entity = $em-&amp;gt;getRepository(&amp;#39;FileBundle:File&amp;#39;)-&amp;gt;find($id);
+
+        if (!$entity) {
+            throw $this-&amp;gt;createNotFoundException(&amp;#39;Unable to find File entity.&amp;#39;);
+        }
+
+
+
+        $response = new \Symfony\Component\HttpFoundation\Response(stream_get_contents($entity-&amp;gt;getDataFile()), 200, array(
+            &amp;#39;Content-Type&amp;#39; =&amp;gt; $entity-&amp;gt;getTypeFile(),
+            &amp;#39;Content-Length&amp;#39; =&amp;gt; $entity-&amp;gt;getSizeFile(),
+            &amp;#39;Content-Disposition&amp;#39; =&amp;gt; &amp;#39;attachment; filename=&amp;quot;&amp;#39; . $entity-&amp;gt;getNameFile() . &amp;#39;&amp;quot;&amp;#39;,
+        ));
+
+        return $response;
+    }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;this action selects the entity and use the different attributes the give a response of type file by setting the type, the length and Disposition for the content of the response&lt;/p&gt;
+
+&lt;p&gt;so we use the download action like this&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot; {{ path(&amp;#39;file_download&amp;#39;,  { &amp;#39;id&amp;#39;: entity.id } ) }}&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;target=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;_blank&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Download&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+   //this download link will be opened in a new angle&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;when I worked with upload file I got a problem with uploading the file with Ajax without refreshing ,I found a solution about uploading the file in a hidden iframe and when the iframe is ready I make a call to display the list of the uploaded files&lt;/p&gt;
 &lt;/blockquote&gt;
 </content>
  </entry>
