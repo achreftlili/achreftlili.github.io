@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Ajaxify the Pagination of knp Paginator Bundle?
-tags: Symfony
+tags: symfony
 ---
 
 

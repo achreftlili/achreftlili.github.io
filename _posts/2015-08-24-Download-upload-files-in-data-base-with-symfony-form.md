@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Download & upload files in data base with symfony!
-tags: Symfony-Files
+tags: symfony-files
 ---
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>

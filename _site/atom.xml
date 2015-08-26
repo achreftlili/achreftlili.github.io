@@ -4,7 +4,7 @@
  <title>Achref Tlili</title>
  <link href="https://achreftlili.github.io//atom.xml" rel="self"/>
  <link href="https://achreftlili.github.io//"/>
- <updated>2015-08-26T19:41:04+02:00</updated>
+ <updated>2015-08-26T22:56:05+02:00</updated>
  <id>https://achreftlili.github.io/</id>
  <author>
    <name>Mark Otto</name>
@@ -257,7 +257,7 @@ class File
     }
 }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;next we have the mapping of the entity with yml&lt;/p&gt;
+&lt;p&gt;Next we add the mapping of the entity with yml&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;Acme\Bundle\FileBundle\Entity\File:
     type: entity
@@ -313,6 +313,12 @@ class File
             length: 20
             fixed: false
     lifecycleCallbacks: {  }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5&gt;2-upload Action&lt;/h5&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;we will begin with the upload action which will create file in our database&lt;/p&gt;
+&lt;/blockquote&gt;
 </content>
  </entry>
  

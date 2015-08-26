@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Get Views with Ajax and Ajaxify their Forms!
-tags: Symfony
+tags: symfony
 ---
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
