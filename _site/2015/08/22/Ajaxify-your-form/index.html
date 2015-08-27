@@ -73,6 +73,10 @@
   <div class="sidebar-item">
     <p>Achref Tlili Blog for web development</p>
  <img src="/images/me.jpg" alt="Me" style="width:100px;height:130px;">
+<p></P>
+Email :tliliachref1990@gmail.com</br>
+ Phone Number :+216 21 945 816</br>
+ Address :Gammarth-Tunisia</br>
   </div>
 
   <nav class="sidebar-nav">
@@ -112,6 +116,18 @@
         
       
     
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
       
     
       
@@ -182,24 +198,22 @@
       <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">html</span><span class="p">){</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="o">+</span><span class="nx">idul</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">html</span><span class="p">);</span> <span class="p">}});</span>
 <span class="p">}</span></code></pre></div>
 
-<blockquote>
-<p>After that we gonna  call it in a button which will create a new Contact for example.</p>
-</blockquote>
+
+  >After that we gonna  call it in a button which will create a new Contact for example.
+
 
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s1">&#39;div_id&#39;</span><span class="o">&gt;</span>
 
 <span class="o">&lt;</span><span class="err">/div&gt;</span>
 <span class="o">&lt;</span><span class="nx">button</span>  <span class="nx">onclick</span><span class="o">=</span><span class="s2">&quot;routeBringer(&#39;&#39;,&#39;div_id&#39;)&quot;</span><span class="o">&gt;</span><span class="nx">Add</span> <span class="nx">Contact</span>   <span class="o">&lt;</span><span class="err">/button&gt;</span></code></pre></div>
 
-<blockquote>
-<p>next we gonna ajaxify the form new Contact.</p>
-</blockquote>
+
+>next we gonna ajaxify the form new Contact.
 
 <h3>ajaxify your form</h3>
 
-<blockquote>
-<p>the result that we get is our new form displayed then we add our script that prevent the default submit then you call the PostForm function which will handle the vars of form and make the submit with ajax</p>
-</blockquote>
+>the result that we get is our new form displayed then we add our script that prevent the default submit then you call the PostForm function which will handle the vars of form and make the submit with ajax
+
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="p">{{</span> <span class="nx">form</span><span class="p">(</span><span class="nx">form</span><span class="p">)</span> <span class="p">}}</span> <span class="c1">//display our form new Contact</span>
 
@@ -221,9 +235,9 @@
 
 <span class="o">&lt;/</span><span class="nx">script</span><span class="o">&gt;</span></code></pre></div>
 
-<blockquote>
-<p>this is the postForm Function</p>
-</blockquote>
+
+>this is the postForm Function
+
 
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">postForm</span><span class="p">(</span> <span class="nx">$form</span><span class="p">,</span> <span class="nx">callback</span> <span class="p">){</span>
 
@@ -252,11 +266,103 @@
  <span class="p">});</span>
 <span class="p">}</span></code></pre></div>
 
-<blockquote>
-<p>after reading the function postForm we notice that there is two section the first one we put every values of our form (first attribute) in values vary after turning with.serializeArray () our form passed in the first parameter to a Javascript Array of object so that it will be ready to be encoded as a JSON string the second part is $. Ajax, jQuery function that will send our form submit as Ajax request in the success of our Ajax request the function callback will be called with data as a parameter this function will put the response html to our div result</p>
-</blockquote>
+
+
+> after reading the function postForm we notice that there is two section the first one we put every values of our form (first attribute) in values vary after turning with.serializeArray () our form passed in the first parameter to a Javascript Array of object so that it will be ready to be encoded as a JSON string the second part is $. Ajax, jQuery function that will send our form submit as Ajax request in the success of our Ajax request the function callback will be called with data as a parameter this function will put the response html to our div result
+
 
 <h6>I hope that I helped you for understanding some Ajax work with Symfony sorry for my English !</h6>
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>Achref Tlili Blog for web development</p>
+ <img src="/images/me.jpg" alt="Me" style="width:100px;height:130px;">
+<p></P>
+Email :tliliachref1990@gmail.com</br>
+ Phone Number :+216 21 945 816</br>
+ Address :Gammarth-Tunisia</br>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/Blog_purpose/">Purpose  !</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About Tlili achref</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+
+
+
+  <div class="sidebar-item">
+    <ul class="social-links">
+      <li>
+        <i class="fa fa-github"></i>&nbsp;<a target="_blank"href="http://www.github.com/achreftlili">GitHub</a>
+      </li>
+      <li>
+        <i class="fa fa-linkedin"></i>&nbsp;<a target="_blank" href="https://tn.linkedin.com/pub/tlili-achref/a2/857/951">LinkedIn</a>
+      </li>
+      <li>
+        <i class="fa fa-twitter"></i>&nbsp;<a target="_blank" href="http://www.twitter.com/Audiovisuelle3">Twitter</a>
+      </li>
+    </ul>
+  </div>
+</div>
 
 
 

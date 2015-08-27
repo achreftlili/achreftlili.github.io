@@ -4,7 +4,7 @@
  <title>Achref Tlili</title>
  <link href="https://achreftlili.github.io//atom.xml" rel="self"/>
  <link href="https://achreftlili.github.io//"/>
- <updated>2015-08-27T01:13:42+02:00</updated>
+ <updated>2015-08-27T15:18:01+02:00</updated>
  <id>https://achreftlili.github.io/</id>
  <author>
    <name>Mark Otto</name>
@@ -558,7 +558,7 @@ i added this function in the three button type Previous,the number page button a
 &lt;p&gt;So to recapitulate about this Post we have two action the first one is the container of our table and the other one is a dynamic action on our table which will be called with each switch of page number like Magic!!!&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;i hope that this help you&lt;/p&gt;
+&lt;p&gt;i hope that this will help you!!&lt;/p&gt;
 </content>
  </entry>
  
@@ -591,24 +591,22 @@ i added this function in the three button type Previous,the number page button a
       &lt;span class=&quot;nx&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;#&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;idul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}});&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;After that we gonna  call it in a button which will create a new Contact for example.&lt;/p&gt;
-&lt;/blockquote&gt;
+
+  &gt;After that we gonna  call it in a button which will create a new Contact for example.
+
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;div_id&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
 
 &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;/div&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;button&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;onclick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;routeBringer(&amp;#39;&amp;#39;,&amp;#39;div_id&amp;#39;)&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Add&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Contact&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;/button&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;next we gonna ajaxify the form new Contact.&lt;/p&gt;
-&lt;/blockquote&gt;
+
+&gt;next we gonna ajaxify the form new Contact.
 
 &lt;h3&gt;ajaxify your form&lt;/h3&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;the result that we get is our new form displayed then we add our script that prevent the default submit then you call the PostForm function which will handle the vars of form and make the submit with ajax&lt;/p&gt;
-&lt;/blockquote&gt;
+&gt;the result that we get is our new form displayed then we add our script that prevent the default submit then you call the PostForm function which will handle the vars of form and make the submit with ajax
+
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-php&quot; data-lang=&quot;php&quot;&gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//display our form new Contact&lt;/span&gt;
 
@@ -630,9 +628,9 @@ i added this function in the three button type Previous,the number page button a
 
 &lt;span class=&quot;o&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;this is the postForm Function&lt;/p&gt;
-&lt;/blockquote&gt;
+
+&gt;this is the postForm Function
+
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;postForm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
 
@@ -661,11 +659,103 @@ i added this function in the three button type Previous,the number page button a
  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;after reading the function postForm we notice that there is two section the first one we put every values of our form (first attribute) in values vary after turning with.serializeArray () our form passed in the first parameter to a Javascript Array of object so that it will be ready to be encoded as a JSON string the second part is $. Ajax, jQuery function that will send our form submit as Ajax request in the success of our Ajax request the function callback will be called with data as a parameter this function will put the response html to our div result&lt;/p&gt;
-&lt;/blockquote&gt;
+
+
+&gt; after reading the function postForm we notice that there is two section the first one we put every values of our form (first attribute) in values vary after turning with.serializeArray () our form passed in the first parameter to a Javascript Array of object so that it will be ready to be encoded as a JSON string the second part is $. Ajax, jQuery function that will send our form submit as Ajax request in the success of our Ajax request the function callback will be called with data as a parameter this function will put the response html to our div result
+
 
 &lt;h6&gt;I hope that I helped you for understanding some Ajax work with Symfony sorry for my English !&lt;/h6&gt;
+&lt;!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. --&gt;
+&lt;input type=&quot;checkbox&quot; class=&quot;sidebar-checkbox&quot; id=&quot;sidebar-checkbox&quot;&gt;
+
+&lt;!-- Toggleable sidebar --&gt;
+&lt;div class=&quot;sidebar&quot; id=&quot;sidebar&quot;&gt;
+  &lt;div class=&quot;sidebar-item&quot;&gt;
+    &lt;p&gt;Achref Tlili Blog for web development&lt;/p&gt;
+ &lt;img src=&quot;/images/me.jpg&quot; alt=&quot;Me&quot; style=&quot;width:100px;height:130px;&quot;&gt;
+&lt;p&gt;&lt;/P&gt;
+Email :tliliachref1990@gmail.com&lt;/br&gt;
+ Phone Number :+216 21 945 816&lt;/br&gt;
+ Address :Gammarth-Tunisia&lt;/br&gt;
+  &lt;/div&gt;
+
+  &lt;nav class=&quot;sidebar-nav&quot;&gt;
+    &lt;a class=&quot;sidebar-nav-item&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          &lt;a class=&quot;sidebar-nav-item&quot; href=&quot;/Blog_purpose/&quot;&gt;Purpose  !&lt;/a&gt;
+        
+      
+    
+      
+        
+          &lt;a class=&quot;sidebar-nav-item&quot; href=&quot;/about/&quot;&gt;About Tlili achref&lt;/a&gt;
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+
+
+
+  &lt;div class=&quot;sidebar-item&quot;&gt;
+    &lt;ul class=&quot;social-links&quot;&gt;
+      &lt;li&gt;
+        &lt;i class=&quot;fa fa-github&quot;&gt;&lt;/i&gt;&amp;nbsp;&lt;a target=&quot;_blank&quot;href=&quot;http://www.github.com/achreftlili&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;i class=&quot;fa fa-linkedin&quot;&gt;&lt;/i&gt;&amp;nbsp;&lt;a target=&quot;_blank&quot; href=&quot;https://tn.linkedin.com/pub/tlili-achref/a2/857/951&quot;&gt;LinkedIn&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;i class=&quot;fa fa-twitter&quot;&gt;&lt;/i&gt;&amp;nbsp;&lt;a target=&quot;_blank&quot; href=&quot;http://www.twitter.com/Audiovisuelle3&quot;&gt;Twitter&lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 </content>
  </entry>
  

@@ -221,4 +221,4 @@ public function slidespaginatorAction(Request $request) {
 
 >So to recapitulate about this Post we have two action the first one is the container of our table and the other one is a dynamic action on our table which will be called with each switch of page number like Magic!!!
 
-i hope that this help you
+i hope that this will help you!!

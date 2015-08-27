@@ -111,3 +111,4 @@ function postForm( $form, callback ){
 
 
 <h6>I hope that I helped you for understanding some Ajax work with Symfony sorry for my English !</h6>
+{% include sidebar.html %}
